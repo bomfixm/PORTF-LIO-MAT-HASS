@@ -1,0 +1,31 @@
+/*
+ * Modo órbita da seção de projetos, num lugar só. Os estados são atributos:
+ *
+ *   html[data-movimento="completo|calmo"]   lib/movimento-inicial.ts (antes da pintura)
+ *   [data-secao="projetos"][data-orbita]    espera | ativa | falhou (orbita/Orbita.tsx)
+ *   [data-secao="projetos"][data-fase]      antes | orbita | grade | fim
+ *
+ * Órbita = movimento completo e a órbita não falhou. Fora disso (calmo, sem
+ * JavaScript, sem WebGL, 3D que não carregou) o trilho não existe e a grade
+ * vem direto, sem espaço vazio antes dela.
+ */
+
+[data-trilho] {
+  display: none;
+}
+
+html[data-movimento="completo"] [data-orbita]:not([data-orbita="falhou"]) [data-trilho] {
+  display: block;
+}
+
+/* a folha da grade cobre a última janela do trilho: no fim da sequência ela
+   está exatamente sob o palco, e a página segue dali sem salto */
+html[data-movimento="completo"] [data-orbita]:not([data-orbita="falhou"]) [data-folha] {
+  margin-top: -100svh;
+}
+
+/* telas dos cards vazias até a capa voadora pousar (só com o controlador
+   ativo; sem ele, ou com a sequência concluída, imagem normal) */
+[data-orbita="ativa"]:not([data-fase="fim"]) [data-grade] [data-painel] img {
+  opacity: var(--chegada, 1);
+}

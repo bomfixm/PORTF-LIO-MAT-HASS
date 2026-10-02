@@ -1,0 +1,73 @@
+# Falhas da TV (build final)
+OK   intro: nenhuma falha durante a intro
+OK   normal: pausas de 1 a 3 s entre uma falha e a próxima, irregulares — 16 pausas, 1.10–2.82 s
+OK   normal: os quatro tipos aparecem — moderada, forte, pesada, leve
+OK   normal: pesada dura 1,5–2 s — 1.69, 1.70, 1.82, 1.74 s
+OK   normal: pesada a cada 10–15 s — 14.02, 10.62, 10.87 s
+OK   normal: menores intercaladas (nunca duas pesadas seguidas) — 13 menores, 4 pesadas
+OK   normal: uma falha por vez
+OK   normal: animações das falhas só dentro da tela
+OK   primeira pesada nos primeiros 15 s após a intro — 6.93 s
+OK   pesada: moldura, menu, controles e botão no mesmo lugar — 335,78,685 | 441,16,483 | 923,555,69 | 413,686,257
+OK   pesada: recortes seguem com o próprio movimento — {"estado":"running","andou":300.0000000000073}
+OK   pesada: controles da TV seguem disponíveis
+OK   fora de vista no meio da pesada: cancelada e imagem estável na hora — {"anim":0,"img":"none","copias":"hidden,hidden,hidden","chuvisco":"0","falha":null,"amb":"pausado"}
+OK   fora de vista: nenhuma falha em 6 s
+OK   de volta à vista: próxima pesada conta só o tempo ativo (10–15 s) — 19.48 s no relógio, 6.43 s fora de vista → 13.05 s ativos
+OK   de volta à vista: retoma em 1–3 s (um agendamento) — 1.44 s
+OK   aba oculta: falha em curso cancelada, imagem estável — {"anim":0,"img":"none","copias":"hidden,hidden,hidden","chuvisco":"0","falha":null}
+OK   aba oculta: nenhuma falha em 5 s
+OK   aba visível de novo: falhas voltam em 1–3 s — 1.24 s
+OK   desligar e TV desligada: nenhuma falha
+OK   ligar: falhas voltam depois da transição — 1.14 s depois de ligar
+OK   desativar animações no meio de uma falha: imagem estável na hora — {"anim":0,"img":"none","copias":"hidden,hidden,hidden","chuvisco":"0","falha":null}
+OK   animações desativadas: nenhuma falha
+OK   depois de 7 trocas: um agendamento só (sem sobreposição, pausas ≥ 1 s) — 8 falhas em 20 s, pausas 1.36–2.46 s
+OK   nenhuma falha começou na intro, em transição, desligada, sem animações, fora de vista ou com a aba oculta — 43 falhas conferidas
+OK   reduzido: pausas de 1 a 3 s entre uma falha e a próxima, irregulares — 12 pausas, 1.12–2.47 s
+OK   reduzido: os quatro tipos aparecem — leve, forte, moderada, pesada
+OK   reduzido: pesada dura 1,5–2 s — 1.77, 1.85 s
+OK   reduzido: pesada a cada 10–15 s — 13.29 s
+OK   reduzido: menores intercaladas (nunca duas pesadas seguidas) — 11 menores, 2 pesadas
+OK   reduzido: uma falha por vez
+OK   reduzido: animações das falhas só dentro da tela
+OK   reduzido: pesada sem faixa de luz, fantasma nem cintilação da varredura — [0,0,0]
+OK   escolha salva "desligadas": nenhuma falha
+OK   sem erros de JS
+35/35
+
+# Ordem da Home (build final)
+OK   1366x768: seções no DOM na ordem nova — abertura → projetos → a-dupla → servicos → contato → rodape
+OK   1366x768: mesma ordem na página (de cima para baixo) — abertura 72, projetos 795, a-dupla 6027, servicos 6817, contato 7950, rodape 8733 | órbita ativa
+OK   1366x768: grade, dupla e serviços em papel claro; contato no escuro — {"grade":0.9150470588235293,"dupla":0.9150470588235293,"servicos":0.9150470588235293,"contato":null}
+OK   1366x768: menu do cabeçalho e do rodapé na ordem das seções — Projetos→/#projetos, A dupla→/#a-dupla, O que a gente cria→/#servicos, Contato→/#contato
+OK   1366x768: Tab segue a ordem visual (grade → dupla → serviços → contato → rodapé) — a-dupla → servicos → contato → rodape
+OK   1366x768: /#a-dupla abre na seção, abaixo do topo — topo 12px
+OK   1366x768: /#servicos abre na seção, abaixo do topo — topo 12px
+OK   1366x768: /#contato abre na seção, abaixo do topo — topo 12px
+OK   1920x1080: seções no DOM na ordem nova — abertura → projetos → a-dupla → servicos → contato → rodape
+OK   1920x1080: mesma ordem na página (de cima para baixo) — abertura 84, projetos 1112, a-dupla 7338, servicos 8162, contato 9341, rodape 10179 | órbita ativa
+OK   1920x1080: grade, dupla e serviços em papel claro; contato no escuro — {"grade":0.9150470588235293,"dupla":0.9150470588235293,"servicos":0.9150470588235293,"contato":null}
+OK   1920x1080: menu do cabeçalho e do rodapé na ordem das seções — Projetos→/#projetos, A dupla→/#a-dupla, O que a gente cria→/#servicos, Contato→/#contato
+OK   1920x1080: Tab segue a ordem visual (grade → dupla → serviços → contato → rodapé) — a-dupla → servicos → contato → rodape
+OK   1920x1080: /#a-dupla abre na seção, abaixo do topo — topo 12px
+OK   1920x1080: /#servicos abre na seção, abaixo do topo — topo 12px
+OK   1920x1080: /#contato abre na seção, abaixo do topo — topo 12px
+OK   768x1024: seções no DOM na ordem nova — abertura → projetos → a-dupla → servicos → contato → rodape
+OK   768x1024: mesma ordem na página (de cima para baixo) — abertura 96, projetos 913, a-dupla 6197, servicos 7562, contato 8805, rodape 9706 | órbita ativa
+OK   768x1024: grade, dupla e serviços em papel claro; contato no escuro — {"grade":0.9150470588235293,"dupla":0.9150470588235293,"servicos":0.9150470588235293,"contato":null}
+OK   768x1024: menu do cabeçalho e do rodapé na ordem das seções — Projetos→/#projetos, A dupla→/#a-dupla, O que a gente cria→/#servicos, Contato→/#contato
+OK   768x1024: Tab segue a ordem visual (grade → dupla → serviços → contato → rodapé) — a-dupla → servicos → contato → rodape
+OK   768x1024: /#a-dupla abre na seção, abaixo do topo — topo 12px
+OK   768x1024: /#servicos abre na seção, abaixo do topo — topo 12px
+OK   768x1024: /#contato abre na seção, abaixo do topo — topo 12px
+OK   390x844: seções no DOM na ordem nova — abertura → projetos → a-dupla → servicos → contato → rodape
+OK   390x844: mesma ordem na página (de cima para baixo) — abertura 96, projetos 670, a-dupla 6211, servicos 8343, contato 10491, rodape 11400 | órbita ativa
+OK   390x844: grade, dupla e serviços em papel claro; contato no escuro — {"grade":0.9150470588235293,"dupla":0.9150470588235293,"servicos":0.9150470588235293,"contato":null}
+OK   390x844: menu do cabeçalho e do rodapé na ordem das seções — Projetos→/#projetos, A dupla→/#a-dupla, O que a gente cria→/#servicos, Contato→/#contato
+OK   390x844: Tab segue a ordem visual (grade → dupla → serviços → contato → rodapé) — a-dupla → servicos → contato → rodape
+OK   390x844: /#a-dupla abre na seção, abaixo do topo — topo 12px
+OK   390x844: /#servicos abre na seção, abaixo do topo — topo 12px
+OK   390x844: /#contato abre na seção, abaixo do topo — topo 12px
+OK   sem erros de JS
+33/33

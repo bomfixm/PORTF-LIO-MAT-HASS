@@ -1,0 +1,70 @@
+/*
+ * Tokens da identidade. Cores amostradas da referência escura
+ * (docs/referencias/abertura-escura.webp).
+ *
+ * Cada token é uma cor final, sem derivar de outro token: variáveis que
+ * referenciam outras são resolvidas onde são declaradas e não acompanham
+ * redefinições locais (armadilha já vivida no projeto anterior). As áreas
+ * claras das próximas etapas redeclaram o que precisarem.
+ */
+:root {
+  /* fundo */
+  --breu: #09100c;
+  --breu-fundo: #070d0a;
+  --breu-luz: #102016;
+
+  /* tinta e papel */
+  --creme: #ede8de;
+  --creme-sombra: #c9c2b4;
+  --papel: #f2ede3;
+  --tinta: #0d0f0c;
+
+  /* áreas de papel claro (grade de projetos e cases) */
+  --papel-fundo: #efe9dc;
+  --papel-sombra: #d9cfbb;
+  --tinta-suave: #3c3e37;
+  --tinta-linha: #b9ae98;
+
+  /* acentos da colagem */
+  --lima: #bcfa46;
+  --lima-escura: #8fd11c;
+  --azul: #2746dd;
+  --azul-forte: #0a2ae7;
+  --azul-claro: #5697f8;
+  --rosa: #fa80a5;
+  --amarelo: #f6c537;
+  --lilas: #c983dc;
+
+  /* televisão */
+  --bege: #dcc6a6;
+  --bege-claro: #ebdcc3;
+  --bege-sombra: #a99070;
+  --bege-escuro: #6d5c45;
+
+  /* tela verde */
+  --tela-fundo: #031409;
+  --tela-meio: #062a12;
+  --fosforo: #c9f9ae;
+  --fosforo-brilho: #46e05a;
+  --fosforo-suave: #69b862;
+
+  /* grão (ruído fractal em SVG, repetível sem emenda): escuro para papel e
+     plástico, claro para a poeira do fundo */
+  --ruido-escuro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 -.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --ruido-claro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 3.2 -1.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* chuvisco de TV (interferência da intro e das falhas da tela) */
+  --chuvisco: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='1' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 1 0 0 0 0 .88 0 0 0 2.4 -1.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* tipografia (variáveis publicadas pelo next/font em layout.tsx) */
+  --fonte-mono: var(--font-plex-mono), ui-monospace, "Cascadia Mono", monospace;
+  --fonte-pixel: var(--font-pixel), var(--font-plex-mono), monospace;
+
+  /* espaço */
+  --margem: clamp(16px, 3.2vw, 48px);
+  --cabecalho-h: clamp(60px, 9.4svh, 84px);
+
+  /* botões: a abertura desconta esta altura ao dimensionar a TV */
+  --botao-fs: clamp(15px, 1.22vw, 18px);
+  --botao-altura: calc(3.15 * clamp(15px, 1.22vw, 18px));
+}

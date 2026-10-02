@@ -1,0 +1,174 @@
+/* Posições em % da TV (viewBox 804 × 690) e tamanhos em cqw da TV.
+   brilho (558, 584) · rever (626, 584) · tecla ⏻ (730, 585), 66 × 32 */
+.controles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.botao {
+  position: absolute;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Área de toque: maior que o botão desenhado, mínimo de 24 px. */
+.botao[data-controle="brilho"],
+.botao[data-controle="rever"] {
+  top: calc(584 / 690 * 100%);
+  width: clamp(24px, 7.4cqw, 46px);
+  aspect-ratio: 1;
+}
+
+.botao[data-controle="brilho"] {
+  left: calc(558 / 804 * 100%);
+}
+
+.botao[data-controle="rever"] {
+  left: calc(626 / 804 * 100%);
+}
+
+.botao[data-controle="energia"] {
+  left: calc(730 / 804 * 100%);
+  top: calc(585 / 690 * 100%);
+  width: clamp(28px, 10cqw, 70px);
+  height: clamp(24px, 6.4cqw, 46px);
+  border-radius: 8px;
+}
+
+/* Toque: a TV pequena do celular deixa os botões com 24 px. Uma área
+   invisível estende o alvo a 44 px de altura e, na largura, até onde o
+   vizinho começa (os centros distam 8,5 cqw entre os giratórios e 12,9 cqw
+   até a tecla), sem um alvo cobrir o outro. */
+@media (pointer: coarse) {
+  .botao::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: max(100%, min(44px, 8.4cqw));
+    height: max(100%, 44px);
+  }
+
+  .botao[data-controle="energia"]::before {
+    width: max(100%, min(48px, 17cqw));
+  }
+}
+
+.botao:focus-visible {
+  outline: 2px dashed var(--lima);
+  outline-offset: 1px;
+}
+
+.botao[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* Tampa do botão giratório, sobre o desenho da carcaça. */
+.tampa {
+  position: relative;
+  width: 4.1cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #f3e7d2 0%, #d2bc99 55%, #a58c6b 100%);
+  box-shadow:
+    0 0 0 0.25cqw #7a6750,
+    0 0.3cqw 0 0.25cqw rgb(0 0 0 / 0.2);
+}
+
+/* Entalhe: mostra o nível do brilho (−55°, 0°, 55°). */
+.entalhe {
+  position: absolute;
+  inset: 0;
+  rotate: 0deg;
+}
+
+.entalhe::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  width: 0.42cqw;
+  height: 32%;
+  margin-left: -0.21cqw;
+  border-radius: 1cqw;
+  background: #5d4b37;
+}
+
+.entalhe[data-nivel="1"] {
+  rotate: -55deg;
+}
+
+.entalhe[data-nivel="3"] {
+  rotate: 55deg;
+}
+
+:global(html[data-movimento="completo"]) .entalhe {
+  transition: rotate 0.25s ease;
+}
+
+.botao:active:not([aria-disabled="true"]) .tampa {
+  scale: 0.94;
+}
+
+/* Tecla ⏻: afundada quando a TV está desligada. */
+.tecla {
+  width: 8.2cqw;
+  height: 3.98cqw;
+  border-radius: 0.5cqw;
+}
+
+.tecla[data-ligada="false"] {
+  background: rgb(60 45 25 / 0.2);
+  box-shadow: inset 0 0.45cqw 0.6cqw rgb(0 0 0 / 0.42);
+}
+
+/* Indisponível durante uma transição: escurecido. */
+.botao[aria-disabled="true"] .tampa {
+  filter: brightness(0.7) saturate(0.6);
+}
+
+.botao[aria-disabled="true"] .tecla {
+  background: rgb(30 22 12 / 0.28);
+}
+
+/* Dica visível no foco por teclado e no hover. */
+.dica {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  translate: -50% 0;
+  padding: 4px 8px;
+  font-family: var(--fonte-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--creme);
+  background: rgb(9 16 12 / 0.92);
+  border: 1px solid rgb(237 232 222 / 0.35);
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.botao[data-controle="energia"] .dica {
+  left: auto;
+  right: 0;
+  translate: none;
+}
+
+.botao:hover .dica,
+.botao:focus-visible .dica {
+  opacity: 1;
+}

@@ -1,0 +1,52 @@
+/* Unidades em cqw: 1cqw = 1% da largura da tela da TV. */
+.bloco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  translate: 0 4%;
+}
+
+.titulo {
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: 25cqw;
+  line-height: 1;
+  letter-spacing: 0.035em;
+  margin-right: -0.035em;
+  text-transform: uppercase;
+  color: var(--fosforo);
+  /* brilho do fósforo: aplicado DEPOIS da grade, por isso no pai */
+  filter: drop-shadow(0 0 0.02em rgb(84 236 100 / 0.95))
+    drop-shadow(0 0 0.12em rgb(70 224 90 / 0.55));
+}
+
+/* Grade de LEDs: célula de 10 × 10 com um quadrado de cantos suaves. O
+   preenchimento vertical cobre a parte esticada da letra (a máscara recorta
+   o que passa da caixa). */
+.led {
+  display: block;
+  padding: 0.12em 0;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect x='1' y='1' width='8' height='8' rx='1.8'/%3E%3C/svg%3E");
+  mask-size: 0.034em 0.034em;
+  mask-position: center;
+}
+
+/* Contorno na cor da letra engorda o traço até o peso da referência. */
+.forma {
+  display: block;
+  transform: scaleY(1.42);
+  -webkit-text-stroke: 0.009em currentColor;
+}
+
+.assinatura {
+  margin-top: 3.4cqw;
+  padding-top: 1.2cqw;
+  border-top: max(0.32cqw, 1.5px) solid currentColor;
+  font-family: var(--fonte-mono);
+  font-weight: 500;
+  font-size: max(2.7cqw, 10.5px);
+  line-height: 1.2;
+  letter-spacing: 0.07em;
+  color: #86de7b;
+  text-shadow: 0 0 0.6cqw rgb(70 224 90 / 0.55);
+}

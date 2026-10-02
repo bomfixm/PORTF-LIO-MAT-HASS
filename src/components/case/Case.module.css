@@ -1,0 +1,623 @@
+.case {
+  --cor: var(--lima);
+  /* fitas e adesivos podem passar da moldura, nunca da página */
+  overflow-x: clip;
+  --largura: calc(1240px + 2 * var(--margem));
+}
+
+.case[data-cor="rosa"] {
+  --cor: var(--rosa);
+}
+
+.case[data-cor="amarelo"] {
+  --cor: var(--amarelo);
+}
+
+.case[data-cor="azul-claro"] {
+  --cor: var(--azul-claro);
+}
+
+.case[data-cor="lilas"] {
+  --cor: var(--lilas);
+}
+
+/* ——— topo escuro ——— */
+
+.topo {
+  position: relative;
+  max-width: var(--largura);
+  margin-inline: auto;
+  padding: clamp(12px, 2vw, 24px) var(--margem) 0;
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+
+.contador {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--creme-sombra);
+}
+
+.contadorLed {
+  padding: 2px 8px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+.cabeca {
+  max-width: 980px;
+  margin-top: clamp(28px, 5vw, 64px);
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--creme-sombra);
+}
+
+.categoria {
+  padding: 3px 10px 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  background: var(--cor);
+  rotate: -2deg;
+}
+
+/* proposta, conceito, em desenvolvimento ou protótipo: carimbo tracejado */
+.situacao {
+  padding: 2px 9px 3px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--creme);
+  border: 2px dashed var(--creme);
+  border-radius: 4px;
+  rotate: 1.5deg;
+}
+
+/* nome do projeto: pixel grande da TV, com a sombra de impressão azul */
+.nome {
+  margin-top: 14px;
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: clamp(54px, 8.2vw, 132px);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  color: var(--creme);
+  text-shadow: 0.035em 0.035em 0 var(--azul-forte);
+  text-wrap: balance;
+}
+
+.chamada {
+  max-width: 34ch;
+  margin-top: clamp(16px, 2vw, 24px);
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--creme);
+}
+
+.acoesTopo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: clamp(22px, 3vw, 34px);
+}
+
+.endereco {
+  font-size: 14px;
+  color: var(--creme-sombra);
+}
+
+.estrela {
+  position: absolute;
+  right: var(--margem);
+  top: clamp(90px, 12vw, 150px);
+  width: clamp(54px, 6vw, 92px);
+  height: auto;
+}
+
+.tiques {
+  position: absolute;
+  right: calc(var(--margem) + clamp(70px, 8vw, 120px));
+  top: clamp(70px, 9vw, 120px);
+  width: clamp(30px, 3vw, 44px);
+  height: auto;
+  rotate: -30deg;
+}
+
+/* ——— imagem principal: metade no breu, metade no papel ——— */
+
+.destaque {
+  position: relative;
+  margin-top: clamp(36px, 5vw, 72px);
+}
+
+.destaqueFundo {
+  position: absolute;
+  inset: 42% 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.destaquePapel {
+  flex: 1;
+}
+
+.destaqueTela {
+  position: relative;
+  z-index: 1;
+  max-width: calc(1100px + 2 * var(--margem));
+  margin-inline: auto;
+  padding-inline: var(--margem);
+}
+
+/* fio claro em volta: o bisel escuro não some contra o breu do topo */
+.molduraPrincipal {
+  box-shadow:
+    0 0 0 1.5px rgb(237 232 222 / 0.28),
+    12px 12px 0 var(--cor),
+    12px 12px 0 2px var(--tinta);
+}
+
+.fita {
+  position: absolute;
+  z-index: 2;
+  top: -4px;
+  right: calc(var(--margem) - 34px);
+  width: clamp(96px, 10vw, 140px);
+  height: 30px;
+  background:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.18) 0 2px, transparent 2px 7px),
+    var(--cor);
+  opacity: 0.9;
+  rotate: 36deg;
+  clip-path: polygon(3% 0, 97% 4%, 100% 30%, 96% 55%, 99% 100%, 2% 96%, 0 62%, 4% 34%);
+  pointer-events: none;
+}
+
+/* ——— corpo em papel ——— */
+
+.corpo {
+  padding-bottom: clamp(64px, 8vw, 120px);
+}
+
+.conteudo {
+  max-width: var(--largura);
+  margin-inline: auto;
+  padding: clamp(48px, 6vw, 88px) var(--margem) 0;
+}
+
+.secaoTitulo {
+  position: relative;
+  justify-self: start;
+  display: inline-block;
+  margin-bottom: clamp(18px, 2vw, 28px);
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 0.85;
+  text-transform: uppercase;
+  color: var(--tinta);
+  isolation: isolate;
+}
+
+/* marca-texto lima por baixo, como no PROJETOS da Home */
+.secaoTitulo::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.08em;
+  right: -0.12em;
+  top: 48%;
+  height: 32%;
+  background: var(--cor);
+  rotate: -1deg;
+  clip-path: polygon(0 12%, 4% 0, 99% 6%, 100% 88%, 96% 100%, 1% 92%);
+}
+
+.trabalho {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.texto {
+  display: grid;
+  gap: 18px;
+}
+
+.texto p {
+  max-width: 62ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--tinta-suave);
+}
+
+.texto .lead {
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.55;
+  color: var(--tinta);
+}
+
+/* ficha: etiqueta de papel colada, com Decalqzinho no canto */
+.ficha {
+  position: relative;
+  padding: 26px 24px 20px;
+  background: #fbf8f1;
+  border: 2px solid var(--tinta);
+  border-radius: 6px;
+  box-shadow: 7px 7px 0 var(--tinta);
+}
+
+.fichaDecalq {
+  position: absolute;
+  top: -42px;
+  right: -22px;
+  width: 104px;
+  height: auto;
+  rotate: 10deg;
+}
+
+.ficha dl {
+  display: grid;
+  margin: 0;
+}
+
+.ficha dl > div {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-top: 2px dashed var(--tinta-linha);
+}
+
+.ficha dl > div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.ficha dt {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.ficha dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 4px 11px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--cor);
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+}
+
+.chips[data-tipo="tec"] li {
+  font-weight: 500;
+  background: transparent;
+}
+
+.linkSite {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  font-weight: 600;
+  color: var(--azul-forte);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+.linkSite svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.linkSite:hover {
+  text-decoration-color: var(--lima-escura);
+  text-decoration-thickness: 4px;
+}
+
+.bloco {
+  display: grid;
+  margin-top: clamp(56px, 7vw, 104px);
+}
+
+/* percurso: três notas de papel, levemente tortas */
+.percurso {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 32px);
+  padding: 0;
+  list-style: none;
+}
+
+.percurso li {
+  padding: 20px 22px 22px;
+  background: #fbf8f1;
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  box-shadow: 5px 5px 0 var(--cor), 5px 5px 0 2px var(--tinta);
+  rotate: -0.8deg;
+}
+
+.percurso li:nth-child(2) {
+  rotate: 0.7deg;
+}
+
+.percurso li:nth-child(3) {
+  rotate: -0.4deg;
+}
+
+.passoNumero {
+  display: block;
+  font-family: var(--fonte-pixel);
+  font-size: 44px;
+  line-height: 0.8;
+  color: var(--azul-forte);
+}
+
+.percurso h3 {
+  margin-top: 12px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.percurso p {
+  margin-top: 6px;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+
+.recursos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 40px;
+  padding: 0;
+  list-style: none;
+}
+
+/* marcador: pixel lima com contorno de tinta */
+.recursos li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 16.5px;
+  line-height: 1.5;
+}
+
+.recursos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.32em;
+  width: 13px;
+  height: 13px;
+  background: var(--lima);
+  border: 2px solid var(--tinta);
+}
+
+/* ——— galeria ——— */
+
+.galeriaDica {
+  margin: -6px 0 22px;
+  font-size: 14px;
+  color: var(--tinta-suave);
+}
+
+/* proporções escolhidas para as três telas terminarem quase na mesma
+   altura: desktop 1200 × 780 + barra; celular 430 × 820 */
+.galeria {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.37fr);
+  align-items: start;
+  gap: clamp(20px, 2.6vw, 36px);
+  padding: 0;
+  list-style: none;
+}
+
+.galeria figcaption {
+  margin-top: 12px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--tinta-suave);
+}
+
+.molduraGaleria {
+  box-shadow: 6px 6px 0 var(--tinta-linha);
+}
+
+.galeria button:hover .molduraGaleria,
+.galeria button:focus-visible .molduraGaleria {
+  box-shadow: 6px 6px 0 var(--cor), 6px 6px 0 2px var(--tinta);
+}
+
+/* ——— fim ——— */
+
+.fim {
+  display: grid;
+  gap: clamp(28px, 4vw, 44px);
+  margin-top: clamp(64px, 8vw, 112px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 2px dashed var(--tinta-linha);
+}
+
+.fimAcoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 24px;
+}
+
+.vizinhos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.vizinho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  color: var(--tinta);
+  text-decoration: none;
+  background: #fbf8f1;
+  border: 2px solid var(--tinta);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+
+.vizinho[data-dir="proximo"] {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.vizinho:hover {
+  box-shadow: 4px 4px 0 var(--cor), 4px 4px 0 2px var(--tinta);
+}
+
+.vizinho:active {
+  translate: 2px 2px;
+  box-shadow: 2px 2px 0 var(--tinta);
+}
+
+.vizinhoImagem {
+  flex: none;
+  width: clamp(96px, 11vw, 150px);
+  height: auto;
+  /* contorno por sombra: não muda a caixa da imagem (sem distorcer) */
+  box-shadow: 0 0 0 2px var(--tinta);
+  border-radius: 4px;
+}
+
+.vizinhoTexto {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.vizinhoRel {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.vizinhoNome {
+  font-family: var(--fonte-pixel);
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 0.95;
+}
+
+/* ——— tablet e celular ——— */
+
+@media (max-width: 899px) {
+  .trabalho {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ficha {
+    max-width: 560px;
+  }
+
+  .percurso {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .galeria li[data-formato="celular"] {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(260px, 64%);
+  }
+
+  .tiques {
+    display: none;
+  }
+
+  .estrela {
+    top: auto;
+    bottom: -8px;
+    width: 46px;
+  }
+}
+
+@media (max-width: 599px) {
+  .recursos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .galeria {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vizinhos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .molduraPrincipal {
+    box-shadow:
+      0 0 0 1.5px rgb(237 232 222 / 0.28),
+      7px 7px 0 var(--cor),
+      7px 7px 0 2px var(--tinta);
+  }
+
+  .fichaDecalq {
+    top: -34px;
+    right: -6px;
+    width: 84px;
+  }
+
+  .estrela {
+    display: none;
+  }
+}

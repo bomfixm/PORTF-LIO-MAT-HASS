@@ -1,0 +1,202 @@
+/* ——— gatilho: a própria tela, com lupa no canto ——— */
+
+.ampliar {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  background: none;
+  border: 0;
+  cursor: zoom-in;
+}
+
+.lupa {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--tinta);
+  background: var(--lima);
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.lupa svg {
+  width: 22px;
+}
+
+.ampliar:hover .lupa,
+.ampliar:focus-visible .lupa {
+  background: #cdff6c;
+  scale: 1.08;
+}
+
+/* ——— dialog ——— */
+
+.dialogo {
+  --foco: var(--lima);
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  color: var(--creme);
+  background: transparent;
+  border: 0;
+  overflow: hidden;
+}
+
+.dialogo::backdrop {
+  /* quase opaco: só a imagem ampliada disputa a atenção */
+  background: rgb(5 9 7 / 0.97);
+}
+
+/* rolagem da página travada enquanto a imagem está aberta */
+:global(html:has(dialog[open])) {
+  overflow: hidden;
+}
+
+.quadro {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 12px;
+  height: 100%;
+  padding: clamp(10px, 2vw, 24px) var(--margem);
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.legenda {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.contador {
+  flex: none;
+  padding: 2px 8px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+.fechar,
+.passo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--creme);
+  background: rgb(9 16 12 / 0.6);
+  border: 2px solid var(--creme);
+  border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
+  cursor: pointer;
+}
+
+.fechar svg,
+.passo svg {
+  width: 20px;
+}
+
+.fechar:hover,
+.passo:hover {
+  background: rgb(237 232 222 / 0.12);
+}
+
+.fechar:active,
+.passo:active {
+  translate: 0 1px;
+}
+
+/* a área livre entre o topo e os botões tem altura definida (linha da
+   grade); a imagem é posicionada nela para que max-height em % funcione */
+.figura {
+  position: relative;
+  min-height: 0;
+}
+
+/* inteira, sem corte nem deformação: cabe na largura e na altura livres,
+   centrada (largura/altura automáticas mantêm a proporção) */
+.imagem {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border: clamp(4px, 0.5vw, 7px) solid var(--tinta);
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgb(237 232 222 / 0.2);
+}
+
+.figura[data-formato="celular"] .imagem {
+  border-radius: 20px;
+  border-width: 9px;
+}
+
+.navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dica {
+  font-size: 13px;
+  color: var(--creme-sombra);
+  text-align: center;
+}
+
+@media (max-width: 599px) {
+  .dica {
+    display: none;
+  }
+
+  .legenda {
+    font-size: 12.5px;
+  }
+
+  .fechar span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}
+
+/* entrada curta só com movimento completo; calmo abre direto */
+:global(html[data-movimento="completo"]) .dialogo[open] .figura {
+  animation: surge 0.2s ease-out;
+}
+
+@keyframes surge {
+  from {
+    opacity: 0;
+    scale: 0.97;
+  }
+}

@@ -1,0 +1,47 @@
+.rasgo {
+  --altura-borda: clamp(26px, 3.6vw, 52px);
+  position: relative;
+  height: clamp(64px, 8vw, 128px);
+  pointer-events: none;
+}
+
+.pixels {
+  position: absolute;
+  inset: 0 0 calc(var(--altura-borda) * 0.5);
+}
+
+.pixels span {
+  position: absolute;
+  display: block;
+  background: var(--papel-fundo);
+}
+
+.pixels span[data-cor="lima"] {
+  background: var(--lima);
+  box-shadow: 0 0 10px rgb(188 250 70 / 0.45);
+}
+
+.pixels span[data-cor="azul"] {
+  background: var(--azul-claro);
+}
+
+.borda {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: var(--altura-borda);
+}
+
+/* fibra branca do rasgo, aparecendo um pouco acima do papel */
+.fibra {
+  fill: #fbf8f1;
+}
+
+.papel {
+  fill: var(--papel-fundo);
+}
+
+.rasgo[data-invertido] {
+  scale: 1 -1;
+}

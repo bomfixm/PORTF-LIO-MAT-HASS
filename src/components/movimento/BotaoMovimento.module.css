@@ -1,0 +1,58 @@
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: 44px;
+  padding: 0 4px;
+  font-family: var(--fonte-mono);
+  font-size: clamp(12px, 0.92vw, 14px);
+  font-weight: 500;
+  color: rgb(237 232 222 / 0.72);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.botao:hover {
+  color: var(--creme);
+}
+
+.trilho {
+  position: relative;
+  width: 2.2em;
+  height: 1.2em;
+  border: 1.5px solid currentColor;
+  border-radius: 1em;
+}
+
+.bolinha {
+  position: absolute;
+  top: 50%;
+  left: 0.18em;
+  width: 0.72em;
+  height: 0.72em;
+  border-radius: 50%;
+  background: currentColor;
+  translate: 0 -50%;
+}
+
+/* estado em <html data-movimento>: ligado = completo (padrão) */
+:global(html:not([data-movimento="calmo"])) .botao .trilho {
+  border-color: var(--lima);
+}
+
+.quandoDesligado,
+:global(html[data-movimento="calmo"]) .quandoLigado {
+  display: none;
+}
+
+:global(html[data-movimento="calmo"]) .quandoDesligado {
+  display: inline;
+}
+
+:global(html:not([data-movimento="calmo"])) .botao .bolinha {
+  left: auto;
+  right: 0.18em;
+  background: var(--lima);
+}

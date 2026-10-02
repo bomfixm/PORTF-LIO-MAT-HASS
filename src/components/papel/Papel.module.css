@@ -1,0 +1,31 @@
+/*
+ * Superfície de papel claro (grade de projetos, corpo dos cases). Cores
+ * finais, sem derivar: a área clara declara a própria tinta e o próprio foco.
+ */
+.papel {
+  --foco: var(--azul-forte);
+  position: relative;
+  isolation: isolate;
+  color: var(--tinta);
+  background: var(--papel-fundo);
+}
+
+/* textura discreta: grão escuro fino + manchas largas de papel */
+.papel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    var(--ruido-escuro),
+    radial-gradient(ellipse 60% 40% at 18% 12%, rgb(255 255 255 / 0.55), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 88% 70%, rgb(201 187 160 / 0.22), transparent 70%);
+  background-size: 180px, 100% 100%, 100% 100%;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.papel ::selection {
+  background: var(--lima);
+  color: var(--tinta);
+}

@@ -1,0 +1,142 @@
+.secao {
+  position: relative;
+  z-index: 1;
+  overflow-x: clip;
+  padding-bottom: clamp(56px, 7vw, 104px);
+}
+
+/* linha de recorte tracejada com a tesoura em pixel */
+.recorte {
+  position: relative;
+  max-width: calc(1240px + 2 * var(--margem));
+  height: 2px;
+  margin-inline: auto;
+  background: repeating-linear-gradient(90deg, var(--tinta) 0 12px, transparent 12px 22px);
+  background-clip: content-box;
+  padding-inline: var(--margem);
+}
+
+.tesoura {
+  position: absolute;
+  left: calc(var(--margem) + 8%);
+  top: -14px;
+  width: 34px;
+  height: auto;
+  padding-inline: 4px;
+  background: var(--papel-fundo);
+  box-sizing: content-box;
+}
+
+.conteudo {
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: clamp(28px, 3.2vw, 44px) var(--margem) 0;
+}
+
+/* abertura em duas colunas: etiqueta e título à esquerda, apresentação à
+   direita, centrada na altura do título; no celular, tudo empilhado */
+.topo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "selo   ."
+    "titulo intro";
+  align-items: center;
+  gap: 10px clamp(32px, 5vw, 96px);
+  margin-bottom: clamp(26px, 3vw, 44px);
+}
+
+.topo > .selo {
+  grid-area: selo;
+  justify-self: start;
+}
+
+.titulo {
+  grid-area: titulo;
+}
+
+.topo > .intro {
+  grid-area: intro;
+  justify-self: end;
+}
+
+@media (max-width: 899px) {
+  .topo {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "selo"
+      "titulo"
+      "intro";
+  }
+
+  .topo > .intro {
+    justify-self: start;
+  }
+}
+
+.selo {
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--creme);
+  background: var(--azul);
+  rotate: -2deg;
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+
+/* sozinha na coluna da direita: um pouco mais de corpo que nas outras */
+.intro {
+  max-width: 40ch;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+
+/* os dois passes, mesmo tamanho. O <li> é o container das medidas do
+   card (cqw) e dá a perspectiva da virada. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(40px, 4vw, 64px) clamp(28px, 3vw, 48px);
+  padding: 0;
+  list-style: none;
+}
+
+.lugar {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  container-type: inline-size;
+  container-name: cartao;
+  perspective: 1600px;
+}
+
+.lugar:first-child {
+  rotate: -0.8deg;
+}
+
+/* desencontro por translate: os dois passes mantêm o mesmo tamanho */
+.lugar:last-child {
+  rotate: 0.8deg;
+  translate: 0 clamp(0px, 2.4vw, 36px);
+}
+
+/* sem largura para dois passes horizontais: um embaixo do outro */
+@media (max-width: 1199px) {
+  .cards {
+    grid-template-columns: minmax(0, 720px);
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .lugar:last-child {
+    translate: none;
+  }
+
+  .lugar:first-child,
+  .lugar:last-child {
+    rotate: 0deg;
+  }
+}

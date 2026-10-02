@@ -1,0 +1,25 @@
+OK   shader da órbita sem blocos (uRevela), pixelização (uBlocos) nem discard; opacidade no lugar — {"chunks":1,"revela":false,"blocos":false,"descarta":false,"opacidade":true,"shader":481}
+OK   desktop 1366×768: título inteiro até 85% do trecho orbital — inteiro até p=0.68 (85% do trecho = 0.680; trecho orbital 0–0.800)
+OK   desktop 1366×768: fade só entre 85% e 99%, decrescente — 0.69:0.98 0.70:0.91 0.71:0.82 0.72:0.71 0.73:0.58 0.74:0.44 0.75:0.32 0.76:0.20 0.77:0.10 0.78:0.03
+OK   desktop 1366×768: zero a partir de 99% (passagem para a grade) — zero desde p=0.79 (99% = 0.792; folha começa em 0.750)
+OK   desktop 1366×768: nenhum ancestral apaga o título antes
+OK   desktop 1366×768: título nunca cobre busca, filtros ou cards enquanto visível — 0 pontos com sobreposição
+OK   desktop 1366×768: título não intercepta ponteiro; tamanho aprovado — font-size 204.9px
+OK   desktop 1366×768: rolagem lenta para baixo — some aos poucos, sem voltar — p 0.51→0.93, título 1.00→0.00
+OK   desktop 1366×768: subindo, reaparece suavemente pelo caminho inverso — p 0.93→0.50, título 0.00→1.00, 5 quadros intermediários
+OK   desktop 1366×768: rolagem rápida desce e sobe: estabiliza em 0 e em 1 — p=0.92 → 0.00; p=0.30 → 1.00
+OK   desktop 1366×768: "Ir direto aos projetos" → grade, título fora — {"p":1,"fase":"fim","opacidade":0}
+OK   imagens atrasadas: nenhuma tela vazia (moldura sem screenshot) enquanto não chegam; depois aparecem — pixels coloridos de moldura: 0.05% sem imagem → 4.26% com imagem
+OK   celular 390×844: título inteiro até 85% do trecho orbital — inteiro até p=0.61 (85% do trecho = 0.609; trecho orbital 0–0.717)
+OK   celular 390×844: fade só entre 85% e 99%, decrescente — 0.62:0.97 0.63:0.89 0.64:0.78 0.65:0.64 0.66:0.49 0.67:0.34 0.68:0.21 0.69:0.10 0.70:0.03
+OK   celular 390×844: zero a partir de 99% (passagem para a grade) — zero desde p=0.71 (99% = 0.710; folha começa em 0.667)
+OK   celular 390×844: nenhum ancestral apaga o título antes
+OK   celular 390×844: título nunca cobre busca, filtros ou cards enquanto visível — 0 pontos com sobreposição
+OK   celular 390×844: título não intercepta ponteiro; tamanho aprovado — font-size 88px
+OK   celular 390×844: rolagem lenta para baixo — some aos poucos, sem voltar — p 0.51→0.93, título 1.00→0.00
+OK   celular 390×844: subindo, reaparece suavemente pelo caminho inverso — p 0.93→0.50, título 0.00→1.00, 4 quadros intermediários
+OK   celular 390×844: rolagem rápida desce e sobe: estabiliza em 0 e em 1 — p=0.92 → 0.00; p=0.30 → 1.00
+OK   celular 390×844: "Ir direto aos projetos" → grade, título fora — {"p":1,"fase":"fim","opacidade":0}
+OK   retorno do case: grade direto, título fora — {"p":1,"fase":"fim","opacidade":0}
+OK   sem erros de JS
+24/24

@@ -1,0 +1,30 @@
+/* "Pular intro": discreto, no canto, sempre alcançável por toque e teclado. */
+.pular {
+  position: fixed;
+  right: var(--margem);
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: 44px;
+  padding: 0 16px;
+  font-family: var(--fonte-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--creme);
+  background: rgb(9 16 12 / 0.7);
+  border: 1.5px solid rgb(237 232 222 / 0.55);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pular:hover {
+  border-color: var(--lima);
+  color: var(--lima);
+}
+
+.pular svg {
+  width: 1.05em;
+  height: 1.05em;
+}

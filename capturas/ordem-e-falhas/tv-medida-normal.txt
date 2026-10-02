@@ -1,0 +1,16 @@
+atraso estimado entre vídeo e página: -0.02 s (11/11 falhas alinhadas)
+tv-parada-30s-1280x720: 749 quadros (24.97 fps), diferença mediana 2.14, limiar 6.42
+site (data-falha)                     | vídeo (quadros com a tela diferente da normal)
+  1.31 s forte      588 ms |   1.24 →   1.76 s = 0.52 s visível (pico 48.9)
+  3.46 s leve       140 ms |   3.40 →   3.52 s = 0.12 s visível (pico 24.7)
+  5.45 s moderada   330 ms |   5.49 →   5.73 s = 0.24 s visível (pico 11.8)
+  7.92 s pesada    1829 ms |   7.85 →   9.69 s = 1.84 s visível (pico 31.5)
+ 12.49 s forte      528 ms |  12.46 →  12.90 s = 0.44 s visível (pico 50.2)
+ 14.18 s leve       217 ms |  14.14 →  14.34 s = 0.20 s visível (pico 24.2)
+ 16.29 s moderada   276 ms |  16.22 →  16.50 s = 0.28 s visível (pico 12.5)
+ 17.90 s leve       217 ms |  17.86 →  18.06 s = 0.20 s visível (pico 23.9)
+ 20.96 s pesada    1669 ms |  20.91 →  22.59 s = 1.68 s visível (pico 32.7)
+ 25.06 s moderada   275 ms |  25.03 →  25.27 s = 0.24 s visível (pico 18.2)
+ 27.84 s leve       155 ms |  27.84 →  27.96 s = 0.12 s visível (pico 18.6)
+trechos do vídeo sem falha correspondente: nenhum
+pausas: 1.17 – 2.85 s | pesadas aos 7.92, 20.96 s | entre pesadas 13.04 s

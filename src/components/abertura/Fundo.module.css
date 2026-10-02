@@ -1,0 +1,42 @@
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 95% at 50% 42%, transparent 52%, rgb(0 0 0 / 0.6) 100%),
+    var(--breu);
+}
+
+.luz {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 46% 42% at 50% 46%, rgb(28 62 38 / 0.42), transparent 72%);
+}
+
+/* poeira clara esparsa + grão escuro fino, por cima da luz */
+.fundo::before,
+.fundo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.fundo::before {
+  background-image: var(--ruido-claro);
+  background-size: 240px;
+  opacity: 0.075;
+}
+
+.fundo::after {
+  background-image: var(--ruido-escuro);
+  background-size: 180px;
+  opacity: 0.55;
+}
+
+/* TV desligada: a luz da tela some do ambiente (o desligar anima até aqui;
+   valor igual a TEMPO.luzApagada em televisao/sequencias.ts). */
+:global(html[data-tv="desligada"]) .luz {
+  opacity: 0.25;
+}

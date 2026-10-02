@@ -1,0 +1,43 @@
+/* Unidades em cqw da caixa da composição (Abertura.module.css). */
+.peca {
+  position: absolute;
+  left: calc(var(--x) * 1cqw);
+  top: calc(var(--y) * 1cqw);
+  width: calc(var(--w) * 1cqw);
+  rotate: var(--r);
+  pointer-events: none;
+}
+
+.peca[data-camada="atras"] {
+  z-index: 1;
+}
+
+.peca[data-camada="frente"] {
+  z-index: 3;
+}
+
+/* Camadas do movimento (animações em styles/movimento.css). A sombra fica
+   na camada interna: anda junto com a peça sem ser redesenhada. */
+.mov[data-mov="b"] {
+  filter: drop-shadow(0 0.4cqw 0.5cqw rgb(0 0 0 / 0.45));
+}
+
+.desenho {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+@media (max-width: 899px) {
+  .peca {
+    left: calc(var(--xm) * 1cqw);
+    top: calc(var(--ym) * 1cqw);
+    width: calc(var(--wm) * 1cqw);
+    rotate: var(--rm);
+  }
+
+  .peca[data-celular="nao"] {
+    display: none;
+  }
+}

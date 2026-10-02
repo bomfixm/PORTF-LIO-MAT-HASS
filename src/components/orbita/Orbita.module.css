@@ -1,0 +1,177 @@
+/*
+ * Trilho e palco da órbita. Se o trilho aparece ou não é decidido em
+ * styles/orbita.css (estado em atributos); aqui só a forma de cada peça.
+ * As variáveis --p, --entrada e --folha são escritas na seção pelo
+ * controlador (Orbita.tsx) a cada atualização do progresso.
+ */
+.trilho {
+  --pin: 300svh;
+  position: relative;
+  height: calc(100svh + var(--pin));
+}
+
+@media (max-width: 759px) {
+  .trilho {
+    --pin: 200svh;
+  }
+}
+
+/* preso durante a sequência; transparente (o breu é a camada Fundo) e por
+   cima da folha, para as capas pousarem sobre os cards */
+.palco {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 100svh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.camada3d {
+  position: absolute;
+  inset: 0;
+}
+
+/* antes de chegar e depois da grade: nada desenhado nem composto */
+:global([data-fase="antes"]) .camada3d,
+:global([data-fase="fim"]) .camada3d {
+  visibility: hidden;
+}
+
+/* ——— título da entrada ——— */
+
+.abertura {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: clamp(10px, 1.6vw, 20px);
+  padding: var(--margem);
+  text-align: center;
+  /* inteiro durante o giro; some no fim do trecho orbital (estado.ts,
+     TITULO), escrito pelo controlador a partir do mesmo progresso */
+  opacity: var(--titulo, 1);
+  translate: 0 calc(var(--p, 0) * -90px);
+}
+
+/* sequência concluída: nada do título fica sobre a grade */
+:global([data-fase="fim"]) .abertura {
+  visibility: hidden;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  background: var(--papel);
+  rotate: -2deg;
+  box-shadow: 3px 3px 0 var(--lima);
+}
+
+.seloNumero {
+  padding: 2px 7px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+/* PROJETOS no breu: o mesmo pixel do título da grade, em creme, com a
+   sombra de impressão azul */
+.palavra {
+  font-family: var(--fonte-pixel);
+  font-size: clamp(88px, 15vw, 232px);
+  line-height: 0.8;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--creme);
+  text-shadow:
+    0.035em 0.035em 0 var(--azul-forte),
+    0 0 0.4em rgb(9 16 12 / 0.9);
+  scale: 1 1.15;
+}
+
+.dica {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--creme);
+  text-shadow: 0 0 8px var(--breu);
+}
+
+.dica svg {
+  width: 18px;
+  color: var(--lima);
+}
+
+/* ——— atalho para a grade ——— */
+
+.direto {
+  position: absolute;
+  right: var(--margem);
+  bottom: clamp(16px, 3svh, 28px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--creme);
+  text-decoration: none;
+  background: rgb(9 16 12 / 0.72);
+  border: 2px solid rgb(237 232 222 / 0.7);
+  border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
+  pointer-events: auto;
+  opacity: clamp(0, calc((var(--folha, 0.75) - var(--p, 0)) * 16), 1);
+}
+
+.direto svg {
+  flex: none;
+  width: 18px;
+  color: var(--lima);
+}
+
+.direto:hover {
+  border-color: var(--creme);
+  background: rgb(237 232 222 / 0.12);
+}
+
+.direto:focus-visible {
+  opacity: 1;
+}
+
+/* com a grade subindo, o atalho sai (e sai da ordem do Tab) */
+:global([data-fase="grade"]) .direto,
+:global([data-fase="fim"]) .direto {
+  visibility: hidden;
+}
+
+@media (max-width: 759px) {
+  /* centrado sem limitar a largura disponível (com right: 50% o texto
+     estourava e o ícone encolhia a zero) */
+  .direto {
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin-inline: auto;
+  }
+
+  .dica {
+    margin-bottom: 64px;
+  }
+}

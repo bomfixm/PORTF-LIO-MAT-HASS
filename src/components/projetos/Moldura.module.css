@@ -1,0 +1,84 @@
+/* Janela de navegador / aparelho em tinta, como o bisel da TV em versão
+   de papel: borda grossa escura, cantos arredondados, sombra dura. */
+.moldura {
+  --bisel: clamp(5px, 0.6vw, 8px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--tinta);
+  border-radius: 12px;
+  padding: 0 var(--bisel) var(--bisel);
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: clamp(26px, 2.4vw, 34px);
+  padding-inline: 4px;
+}
+
+.luzes {
+  display: inline-flex;
+  gap: 5px;
+}
+
+/* três "pixels" de luz, cores da colagem */
+.luzes i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--rosa);
+}
+
+.luzes i:nth-child(2) {
+  background: var(--amarelo);
+}
+
+.luzes i:nth-child(3) {
+  background: var(--lima);
+}
+
+.dominio {
+  overflow: hidden;
+  font-size: clamp(11px, 0.85vw, 12.5px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--creme-sombra);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.vidro {
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #1b1d19;
+}
+
+.imagem {
+  width: 100%;
+  height: auto;
+}
+
+/* Celular: aparelho com alto-falante; bisel igual nos quatro lados. */
+.moldura[data-formato="celular"] {
+  --bisel: clamp(6px, 0.7vw, 9px);
+  border-radius: 26px;
+  padding: calc(var(--bisel) * 2.6) var(--bisel) calc(var(--bisel) * 2.2);
+}
+
+.moldura[data-formato="celular"] .vidro {
+  border-radius: 12px;
+}
+
+.alto {
+  position: absolute;
+  top: calc(var(--bisel) * 1);
+  left: 50%;
+  width: 22%;
+  height: 4px;
+  border-radius: 4px;
+  background: #3a3c36;
+  translate: -50% 0;
+}

@@ -1,0 +1,120 @@
+/* catálogo: topo no breu (a camada Fundo), grade em papel claro */
+.catalogo {
+  position: relative;
+  z-index: 1;
+  /* fitas e adesivos podem passar da borda do card, nunca da página */
+  overflow-x: clip;
+}
+
+.topo {
+  position: relative;
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: clamp(12px, 2vw, 24px) var(--margem) clamp(30px, 4vw, 56px);
+  color: var(--creme);
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+
+.contador {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--creme-sombra);
+}
+
+.contadorLed {
+  padding: 2px 8px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+.cabeca {
+  display: grid;
+  gap: clamp(12px, 1.6vw, 20px);
+  margin-top: clamp(26px, 4vw, 52px);
+  padding-right: clamp(0px, 10vw, 160px);
+}
+
+.intro {
+  max-width: 58ch;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--creme);
+}
+
+.estrela {
+  position: absolute;
+  right: var(--margem);
+  top: clamp(84px, 9vw, 120px);
+  width: clamp(40px, 4.4vw, 64px);
+  height: auto;
+  rotate: 12deg;
+}
+
+.tiques {
+  position: absolute;
+  right: calc(var(--margem) + clamp(54px, 5.6vw, 84px));
+  top: clamp(78px, 8.4vw, 112px);
+  width: clamp(24px, 2.4vw, 36px);
+  height: auto;
+  rotate: -40deg;
+}
+
+.folha {
+  position: relative;
+  z-index: 1;
+}
+
+.papel {
+  padding-bottom: clamp(56px, 7vw, 104px);
+}
+
+.conteudo {
+  position: relative;
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: clamp(20px, 3vw, 40px) var(--margem) 0;
+}
+
+/* Decalqzinho colado no canto da folha, acima da busca */
+.decalq {
+  position: absolute;
+  right: var(--margem);
+  top: clamp(-38px, -3vw, -24px);
+  width: clamp(72px, 7vw, 104px);
+  height: auto;
+  rotate: 9deg;
+  pointer-events: none;
+}
+
+@media (max-width: 619px) {
+  .estrela,
+  .tiques {
+    display: none;
+  }
+
+  .cabeca {
+    padding-right: 0;
+  }
+
+  .decalq {
+    width: 64px;
+    top: -30px;
+  }
+}

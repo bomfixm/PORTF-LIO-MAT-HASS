@@ -1,0 +1,132 @@
+.rodape {
+  position: relative;
+  z-index: 1;
+  color: var(--creme);
+  background: rgb(7 13 10 / 0.6);
+  border-top: 2px dashed rgb(237 232 222 / 0.22);
+}
+
+.conteudo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr)) auto;
+  align-items: start;
+  gap: 32px clamp(24px, 4vw, 64px);
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: clamp(40px, 5vw, 64px) var(--margem) 28px;
+}
+
+.marca {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  align-items: center;
+  gap: 14px 18px;
+}
+
+.lettering {
+  display: block;
+  width: clamp(150px, 13vw, 200px);
+  color: var(--creme);
+}
+
+.lettering svg {
+  width: 100%;
+  height: auto;
+}
+
+.decalq {
+  width: 66px;
+  height: auto;
+  rotate: -8deg;
+}
+
+.frase {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  color: var(--creme-sombra);
+}
+
+.rotulo {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lima);
+}
+
+.nav ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  font-size: 15px;
+  color: var(--creme);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--lima);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* volta ao topo: o mesmo contorno de papel dos botões da abertura */
+.topo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 16px;
+  font-size: 14.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--creme);
+  text-decoration: none;
+  border: 2px solid var(--creme);
+  border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
+}
+
+.topo svg {
+  flex: none;
+  width: 18px;
+  color: var(--lima);
+}
+
+.topo:hover {
+  background: rgb(237 232 222 / 0.1);
+}
+
+.topo:active {
+  translate: 0 1px;
+}
+
+.final {
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: 0 var(--margem) 28px;
+  font-size: 13px;
+  color: rgb(237 232 222 / 0.6);
+}
+
+@media (max-width: 899px) {
+  .conteudo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .marca {
+    grid-column: 1 / -1;
+  }
+
+  .topo {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}

@@ -1,0 +1,107 @@
+.titulo {
+  --marca: var(--lima);
+  display: grid;
+  justify-items: start;
+  gap: 0.12em;
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: clamp(64px, 10.5vw, 168px);
+  line-height: 0.8;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.titulo[data-tamanho="medio"] {
+  font-size: clamp(54px, 7.6vw, 120px);
+}
+
+/* duas linhas mais contidas, para dividir a largura com outro bloco */
+.titulo[data-tamanho="compacto"] {
+  gap: 0.04em;
+  font-size: clamp(48px, 6.2vw, 100px);
+}
+
+/* uma linha que atravessa a largura útil (com fluxo="linha") */
+.titulo[data-tamanho="faixa"] {
+  font-size: clamp(50px, 11.2vw, 164px);
+}
+
+.titulo[data-marcador="rosa"] {
+  --marca: var(--rosa);
+}
+
+.titulo[data-marcador="amarelo"] {
+  --marca: var(--amarelo);
+}
+
+.titulo[data-marcador="azul-claro"] {
+  --marca: var(--azul-claro);
+}
+
+.titulo[data-marcador="lilas"] {
+  --marca: var(--lilas);
+}
+
+/* destino de foco programático (âncoras), não controle */
+.titulo:focus {
+  outline: none;
+}
+
+.linha {
+  display: block;
+}
+
+/* fluxo "linha": trechos lado a lado, quebrando só entre eles. A altura
+   de linha dá o respiro que o gap dá no modo em blocos (o texto é
+   esticado para cima a partir da base). */
+.titulo[data-fluxo="linha"] {
+  display: block;
+  line-height: 0.98;
+}
+
+.titulo[data-fluxo="linha"] .linha {
+  display: inline;
+}
+
+.titulo[data-fluxo="linha"] .texto {
+  line-height: 0.8;
+}
+
+.texto {
+  position: relative;
+  display: inline-block;
+  padding-inline: 0.04em;
+  scale: 1 1.16;
+  transform-origin: 50% 100%;
+  color: var(--tinta);
+  text-shadow: 0.035em 0.035em 0 var(--azul-forte);
+  text-wrap: balance;
+}
+
+.titulo[data-tom="escuro"] .texto {
+  color: var(--creme);
+}
+
+/* faixa de marca-texto, recortada como fita */
+.texto::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.06em;
+  right: -0.1em;
+  top: 46%;
+  height: 34%;
+  background: var(--marca);
+  rotate: -1.2deg;
+  clip-path: polygon(0 12%, 4% 0, 99% 6%, 100% 88%, 96% 100%, 1% 92%);
+}
+
+/* no breu a faixa fica mais estreita: o texto claro precisa do fundo escuro */
+.titulo[data-tom="escuro"] .texto::before {
+  top: 78%;
+  height: 22%;
+}
+
+.linha:nth-child(2) .texto::before {
+  rotate: 1deg;
+}

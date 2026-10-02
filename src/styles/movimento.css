@@ -1,0 +1,145 @@
+/*
+ * Todo o movimento do site em um lugar só. Os estados são atributos escritos
+ * por JavaScript, nunca regras @media espalhadas:
+ *
+ *   html[data-movimento="completo|calmo"]  src/lib/movimento-inicial.ts e movimento.ts
+ *   html[data-intro="tocando|pronta"]      idem + abertura/CenaViva.tsx
+ *   [data-ambiente="ativo|pausado"]        CenaViva: cena fora de vista ou aba oculta
+ *
+ * A coreografia da intro e as falhas da tela são Web Animations
+ * (abertura/intro.ts e abertura/falha.ts). Aqui ficam só o estado inicial da
+ * intro — o que aparece antes do JavaScript chegar — e a flutuação.
+ */
+
+/* ——— Intro: cena escura, TV surgindo com a tela apagada ——— */
+
+html[data-intro="tocando"] [data-tv] {
+  animation: tv-surge 0.4s ease-out both;
+}
+
+@keyframes tv-surge {
+  from {
+    opacity: 0;
+  }
+}
+
+html[data-intro="tocando"] [data-carcaca] {
+  opacity: 0.55;
+}
+
+html[data-intro="tocando"] [data-tela-desligada] {
+  opacity: 1;
+}
+
+html[data-intro="tocando"]
+  :is(
+    [data-tela-imagem],
+    [data-titulo],
+    [data-assinatura],
+    [data-led],
+    [data-fundo-luz],
+    [data-adesivo],
+    [data-objeto],
+    [data-entra]
+  ) {
+  opacity: 0;
+}
+
+/* Invisíveis não recebem clique; o foco por teclado encerra a intro
+   (CenaViva), então nada fica focado sem aparecer. */
+html[data-intro="tocando"] [data-entra] {
+  pointer-events: none;
+}
+
+/* ——— Movimento próprio dos objetos da colagem ———
+   Três osciladores por peça (Colagem.tsx): horizontal e giro em
+   [data-mov="a"], vertical em [data-mov="b"]. Cada um vai de uma ponta à
+   outra em meio ciclo e volta (alternate + ease-in-out): para suave nas
+   pontas, fecha o ciclo sem salto. Percursos dx/dy em px (escalados no
+   celular por --esc-mov), giro em graus para cada lado, ciclos e fases
+   próprios. O ângulo original da peça (rotate em .peca) não é tocado.
+   Desligar o movimento devolve tudo à posição da composição; pausar congela
+   onde está e retomar segue dali. */
+
+@keyframes oscila-x {
+  from {
+    translate: calc(var(--dx) * var(--esc-mov, 1) * -0.5px) 0;
+  }
+  to {
+    translate: calc(var(--dx) * var(--esc-mov, 1) * 0.5px) 0;
+  }
+}
+
+@keyframes oscila-y {
+  from {
+    translate: 0 calc(var(--dy) * var(--esc-mov, 1) * -0.5px);
+  }
+  to {
+    translate: 0 calc(var(--dy) * var(--esc-mov, 1) * 0.5px);
+  }
+}
+
+@keyframes oscila-giro {
+  from {
+    rotate: calc(var(--rot) * var(--esc-giro, 1) * -1deg);
+  }
+  to {
+    rotate: calc(var(--rot) * var(--esc-giro, 1) * 1deg);
+  }
+}
+
+/* Intensidade geral: os valores de Colagem.tsx são a base; aqui fica o
+   botão único para deixar tudo mais ou menos sutil. 0,8 = 20% abaixo da
+   base (pedido de 01/10/2026: "um pouco mais sutil"). */
+[data-objeto] {
+  --esc-mov: 0.8;
+  --esc-giro: 0.8;
+}
+
+html[data-movimento="completo"] [data-mov="a"] {
+  animation:
+    oscila-x calc(var(--cx) / 2) ease-in-out var(--fx) infinite alternate,
+    oscila-giro calc(var(--cr) / 2) ease-in-out var(--fr) infinite alternate;
+  will-change: translate, rotate;
+}
+
+html[data-movimento="completo"] [data-mov="b"] {
+  animation: oscila-y calc(var(--cy) / 2) ease-in-out var(--fy) infinite alternate;
+  will-change: translate;
+}
+
+/* Celular: percurso menor, ainda visível (0,62 da base × 0,8). */
+@media (max-width: 899px) {
+  [data-objeto] {
+    --esc-mov: 0.5;
+  }
+}
+
+/* Movimento reduzido no sistema (data-suave): os recortes continuam se
+   mexendo, com menos da metade do percurso e do giro. */
+html[data-suave="sim"] [data-objeto] {
+  --esc-mov: 0.35;
+  --esc-giro: 0.3;
+}
+
+@media (max-width: 899px) {
+  html[data-suave="sim"] [data-objeto] {
+    --esc-mov: 0.22;
+  }
+}
+
+/* Pausa (fora de vista / aba oculta). Precisa pesar MAIS que as regras
+   acima: o atalho `animation` delas redefine animation-play-state e, com
+   peso igual ou menor, a pausa perdia (já aconteceu). */
+html[data-movimento] [data-ambiente="pausado"] [data-objeto] [data-mov] {
+  animation-play-state: paused;
+}
+
+/* ——— Rolagem até as seções ———
+   Âncoras ("Explorar projetos", menu) rolam suave com as animações ligadas;
+   desligadas ou com movimento reduzido no sistema, o salto é direto. A troca de rota do Next não
+   herda isto (data-scroll-behavior no layout). A compensação do cabeçalho
+   é o scroll-padding-top de globals.css. */
+html[data-movimento="completo"]:not([data-suave="sim"]) {
+  scroll-behavior: smooth;
+}

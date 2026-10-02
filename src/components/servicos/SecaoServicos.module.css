@@ -1,0 +1,265 @@
+.secao {
+  position: relative;
+  z-index: 1;
+  overflow-x: clip;
+  padding-bottom: clamp(64px, 8vw, 120px);
+}
+
+.conteudo {
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: clamp(12px, 1.6vw, 24px) var(--margem) 0;
+}
+
+/* ——— topo ——— */
+
+/* etiqueta → título numa faixa → descrição → etiquetas, sem vãos grandes */
+.topo {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: clamp(8px, 1vw, 14px);
+  margin-bottom: clamp(24px, 2.8vw, 40px);
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--creme);
+  background: var(--tinta);
+  rotate: -2deg;
+}
+
+.seloNumero {
+  padding: 2px 7px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+.intro {
+  max-width: 60ch;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+
+/* enfeites na altura da etiqueta, à direita: o título usa a largura */
+.estrela {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  width: clamp(40px, 4.2vw, 64px);
+  height: auto;
+  rotate: 12deg;
+}
+
+.tiques {
+  position: absolute;
+  right: clamp(54px, 5.6vw, 84px);
+  top: -6px;
+  width: clamp(24px, 2.4vw, 36px);
+  height: auto;
+  rotate: -40deg;
+}
+
+/* ——— etiquetas ——— */
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(30px, 3.6vw, 52px) clamp(22px, 2.6vw, 38px);
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 1023px) {
+  .lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 619px) {
+  .lista {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .estrela,
+  .tiques {
+    display: none;
+  }
+}
+
+.item {
+  --cor: var(--lima);
+  --cor-icone: var(--cor);
+  display: flex;
+  rotate: -0.7deg;
+  /* a sombra fica no item: o clip-path da etiqueta recortaria um filter
+     aplicado nela mesma (filter vem antes do clip-path) */
+  filter: drop-shadow(6px 6px 0 var(--cor)) drop-shadow(2px 2px 0 var(--tinta));
+}
+
+.item:nth-child(3n + 2) {
+  rotate: 0.6deg;
+}
+
+.item:nth-child(3n) {
+  rotate: -0.2deg;
+}
+
+.item[data-cor="rosa"] {
+  --cor: var(--rosa);
+}
+
+.item[data-cor="amarelo"] {
+  --cor: var(--amarelo);
+}
+
+.item[data-cor="azul-claro"] {
+  --cor: var(--azul-claro);
+}
+
+.item[data-cor="lilas"] {
+  --cor: var(--lilas);
+}
+
+/* etiqueta de papel: canto superior direito cortado, borda de tinta e
+   sombra dura na cor do serviço (como os cards da grade) */
+.etiqueta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 22px 24px 22px;
+  background: #fbf8f1;
+  border: 2px solid var(--tinta);
+  border-radius: 4px 0 4px 4px;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+}
+
+/* a dobra do canto cortado */
+.etiqueta::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(225deg, transparent 50%, var(--tinta) 50%, var(--tinta) calc(50% + 2px), var(--papel-sombra) calc(50% + 2px));
+}
+
+/* ilhós e um pedaço de barbante saindo pela borda de cima */
+.ilhos {
+  position: absolute;
+  top: 16px;
+  right: 46px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--tinta);
+  border-radius: 50%;
+  background: var(--papel-fundo);
+}
+
+.barbante {
+  position: absolute;
+  top: -2px;
+  right: 50px;
+  width: 3px;
+  height: 22px;
+  background: repeating-linear-gradient(0deg, var(--tinta) 0 3px, #6b5b43 3px 6px);
+}
+
+.cabeca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.numero {
+  padding: 3px 8px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+/* ícone colado como adesivo: recorte branco com sombra curta */
+.adesivo {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 0.25);
+  rotate: -6deg;
+}
+
+.item:nth-child(even) .adesivo {
+  rotate: 5deg;
+}
+
+.icone {
+  width: 40px;
+  height: 40px;
+}
+
+.nome {
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: clamp(32px, 2.7vw, 42px);
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.descricao {
+  flex: 1;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+
+/* atalho para o WhatsApp com a mensagem do serviço */
+.acao {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 0 14px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+}
+
+.acao svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.acao:hover {
+  background: var(--cor);
+}
+
+.acao:active {
+  translate: 0 1px;
+}

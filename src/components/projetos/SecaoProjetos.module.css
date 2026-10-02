@@ -1,0 +1,190 @@
+.secao {
+  position: relative;
+  z-index: 1;
+  /* fitas e adesivos podem passar da borda do card, nunca da página */
+  overflow-x: clip;
+  /* a passagem começa já abaixo da primeira tela: nada cobre a abertura */
+  margin-top: clamp(8px, 2vw, 32px);
+}
+
+/* a folha com a grade: acima do trilho, abaixo do palco da órbita */
+.folha {
+  position: relative;
+  z-index: 1;
+}
+
+/* fim da grade: o respiro até "O que a gente cria" é curto (etapa 5) */
+.papel {
+  padding-bottom: clamp(44px, 4.4vw, 72px);
+}
+
+.conteudo {
+  max-width: calc(1240px + 2 * var(--margem));
+  margin-inline: auto;
+  padding: clamp(20px, 3vw, 40px) var(--margem) 0;
+}
+
+/* ——— topo: selo, título, introdução e Decalqzinho ——— */
+
+.topo {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  margin-bottom: clamp(28px, 4vw, 52px);
+  padding-right: clamp(0px, 16vw, 230px);
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: start;
+  padding: 5px 14px 5px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--creme);
+  background: var(--tinta);
+  rotate: -2deg;
+}
+
+/* número em "LED" verde, a mesma tela da TV */
+.seloNumero {
+  padding: 2px 7px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+/* PROJETOS: pixel grande, esticado como o PORTFÓLIO da TV, com faixa de
+   marca-texto lima e sombra de impressão azul desencontrada */
+.titulo {
+  position: relative;
+  justify-self: start;
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: clamp(84px, 14vw, 216px);
+  line-height: 0.78;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.tituloTexto {
+  position: relative;
+  display: inline-block;
+  padding-inline: 0.04em;
+  scale: 1 1.18;
+  transform-origin: 50% 100%;
+  color: var(--tinta);
+  text-shadow: 0.035em 0.035em 0 var(--azul-forte);
+}
+
+.tituloTexto::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.06em;
+  right: -0.1em;
+  top: 46%;
+  height: 34%;
+  background: var(--lima);
+  rotate: -1.2deg;
+  clip-path: polygon(0 12%, 4% 0, 99% 6%, 100% 88%, 96% 100%, 1% 92%);
+}
+
+.estrela {
+  position: absolute;
+  top: -0.08em;
+  right: -0.42em;
+  width: 0.3em;
+  height: auto;
+}
+
+.tiques {
+  position: absolute;
+  left: -0.32em;
+  top: -0.2em;
+  width: 0.28em;
+  height: auto;
+  rotate: -90deg;
+}
+
+.intro {
+  max-width: 54ch;
+  margin-top: clamp(10px, 1.6vw, 20px);
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+
+.decalq {
+  position: absolute;
+  right: 0;
+  top: 8%;
+  width: clamp(110px, 14vw, 200px);
+  height: auto;
+  rotate: 8deg;
+}
+
+@media (max-width: 759px) {
+  .topo {
+    padding-right: 0;
+  }
+
+  .decalq {
+    top: -6px;
+    width: 92px;
+  }
+
+  .tiques {
+    display: none;
+  }
+
+  .estrela {
+    right: -0.36em;
+  }
+}
+
+/* ——— com a órbita: topo compacto ———
+   O PROJETOS grande e a apresentação aparecem no palco, na entrada da
+   órbita; na folha fica uma linha com selo e título, para o fim da
+   sequência mostrar a busca e a primeira fileira de cards. */
+:global(html[data-movimento="completo"]) .secao:not([data-orbita="falhou"]) .topo {
+  grid-template-columns: auto auto;
+  justify-content: start;
+  align-items: center;
+  gap: 10px 22px;
+  margin-bottom: clamp(18px, 2.4vw, 30px);
+  padding-right: 0;
+}
+
+:global(html[data-movimento="completo"]) .secao:not([data-orbita="falhou"]) .titulo {
+  grid-row: 1;
+  font-size: clamp(56px, 6vw, 92px);
+}
+
+:global(html[data-movimento="completo"]) .secao:not([data-orbita="falhou"]) .selo {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+:global(html[data-movimento="completo"]) .secao:not([data-orbita="falhou"]) .intro,
+:global(html[data-movimento="completo"]) .secao:not([data-orbita="falhou"]) .decalq,
+:global(html[data-movimento="completo"]) .secao:not([data-orbita="falhou"]) .tiques {
+  display: none;
+}
+
+/* título focado por "Ir direto aos projetos" (destino, não controle) */
+.titulo:focus {
+  outline: none;
+}
+
+.titulo:focus-visible {
+  outline: 2px dashed var(--azul-forte);
+  outline-offset: 8px;
+}

@@ -1,0 +1,42 @@
+OK   Home desktop: os 7 destaques, na ordem, nenhum projeto novo — helios-solar-beige, reis-lazer, prospectlife, nativa-arquitetura, vai-de-smash, the-one-bistro, aps-engenharia
+OK   Home desktop: chamada logo depois da APS, último item
+OK   Home desktop: textos e destino da chamada — Tem mais por aqui. | Ver todos os projetos → /projetos/
+OK   Home desktop: "Ver case" da APS continua indo ao case da APS
+OK   Home desktop: APS na coluna esquerda e chamada na direita, mesma linha e mesma altura — APS {"x":63,"y":2315,"w":593,"h":597} · chamada {"x":710,"y":2315,"w":593,"h":597}
+OK   Home desktop: contadores dos destaques — selo "07destaques" · status "7 destaques" · Todos 7, Sites 6, Sistemas 1
+OK   Home desktop: sem rolagem lateral — 0px
+OK   Home celular: os 7 destaques, na ordem, nenhum projeto novo — helios-solar-beige, reis-lazer, prospectlife, nativa-arquitetura, vai-de-smash, the-one-bistro, aps-engenharia
+OK   Home celular: chamada logo depois da APS, último item
+OK   Home celular: textos e destino da chamada — Tem mais por aqui. | Ver todos os projetos → /projetos/
+OK   Home celular: "Ver case" da APS continua indo ao case da APS
+OK   Home celular: chamada empilhada sob a APS, altura do próprio conteúdo — APS {"x":16,"y":3334,"w":358,"h":482} · chamada {"x":16,"y":3856,"w":358,"h":454}
+OK   Home celular: contadores dos destaques — selo "07destaques" · status "7 destaques" · Todos 7, Sites 6, Sistemas 1
+OK   Home celular: sem rolagem lateral — 0px
+OK   /projetos/ responde e tem o título da página — 200 · Todos os projetos | WEB DECALQ
+OK   catálogo: 14 projetos, destaques + novos, sem duplicatas — Helios Energia Solar, Reis Lazer & Cia, ProspectLife, Nativa Arquitetura & Paisagismo, Vai de Smash, The One Bistrô, APS Engenharia e Construção, Van Escolar do Tio Robert, Pâmela Hanara, Aninha Costura Afetiva, Amora Pet Care, Alba Enxovais, Instituto Batutinhas, Florescer
+OK   catálogo: Vai de Smash uma vez só
+OK   catálogo: contadores do total — 14 projetos · Todos 14, Sites 12, Sistemas 2
+OK   catálogo: status visíveis nos cards (proposta, conceitos, em desenvolvimento, protótipo) — {"helios-solar-beige":null,"reis-lazer":null,"prospectlife":null,"nativa-arquitetura":null,"vai-de-smash":null,"the-one-bistro":null,"aps-engenharia":null,"van-tio-robert":null,"portfolio-pamela":null,"aninha-proposta":"Proposta","amora-pet-care":"Conceito","alba-enxovais":"Conceito","os-batutinhas":"Em desenvolvimento","florescer":"Protótipo"}
+OK   catálogo: imagens abaixo da dobra carregam sob demanda — {"lazy":14,"total":14,"carregadasNoFim":0}
+OK   catálogo: todas as imagens carregam, inteiras e nítidas (≥ 1000 px de largura)
+OK   busca "pet" → Amora Pet Care
+OK   busca "enxoval" → Aninha e Alba
+OK   busca "proposta" → Aninha
+OK   estado vazio e "Limpar busca"
+OK   filtro Sistemas → ProspectLife e Florescer
+OK   case aberto pelo catálogo: "Voltar a todos os projetos" — Voltar a todos os projetos→/projetos/ | Voltar a todos os projetos→/projetos/
+OK   volta ao catálogo sem recarregar, com busca, filtro e o card focado — {"marca":1,"busca":"pet","filtro":"Sites 12","foco":"amora-pet-care","visivel":true}
+OK   destaque aberto pelo catálogo também volta ao catálogo — Voltar a todos os projetos→/projetos/
+OK   seguindo para o próximo case, a volta continua no catálogo — Voltar a todos os projetos→/projetos/
+OK   do catálogo, "A dupla" no menu leva à seção da Home — {"topo":12,"intro":"pronta"}
+OK   "Voltar ao início" leva à Home sem intro
+OK   case aberto pela Home: "Voltar ao portfólio" → grade da Home — Voltar ao portfólio→/#projetos-grade
+OK   volta à Home com o card de origem focado — nativa-arquitetura
+OK   busca sem resultado na Home oferece o catálogo
+OK   o catálogo abre com a mesma busca — amora-pet-care
+OK   acesso direto aos 7 cases novos (nome, site real, imagens, volta ao catálogo) — van-tio-robert: 200 "Van Escolar do Tio Robert" · portfolio-pamela: 200 "Pâmela Hanara" · aninha-proposta: 200 "Aninha Costura Afetiva" · amora-pet-care: 200 "Amora Pet Care" · alba-enxovais: 200 "Alba Enxovais" · os-batutinhas: 200 "Instituto Batutinhas" · florescer: 200 "Florescer"
+OK   acesso direto a um destaque: volta à grade da Home — Voltar ao portfólio→/#projetos-grade
+OK   slug inexistente → 404
+OK   catálogo no celular: uma coluna, sem rolagem lateral, "Voltar ao início" à vista — {"lateral":0,"umaColuna":true,"largura":358,"voltar":true}
+OK   sem erros de JS
+41/41

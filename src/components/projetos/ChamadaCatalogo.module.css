@@ -1,0 +1,161 @@
+/*
+ * Chamada para o catálogo: ocupa a coluna ao lado do último card da Home e
+ * acompanha a altura dele (o item da grade estica na linha); no celular,
+ * empilhada, fica do tamanho do conteúdo.
+ */
+.chamada {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  gap: clamp(22px, 2.6vw, 34px);
+  height: 100%;
+  padding: clamp(26px, 3vw, 44px) clamp(22px, 2.8vw, 40px);
+  background: #fbf8f1;
+  border: 2px solid var(--tinta);
+  border-radius: 12px 8px 14px 9px / 9px 14px 8px 12px;
+  /* a mesma sombra dura das telas dos cards, em lima */
+  box-shadow: 9px 9px 0 var(--lima), 9px 9px 0 2px var(--tinta);
+  rotate: 0.6deg;
+}
+
+/* fita adesiva no alto, como nos cards */
+.fita {
+  position: absolute;
+  z-index: 2;
+  top: -14px;
+  left: 50%;
+  width: clamp(92px, 9vw, 124px);
+  height: 26px;
+  translate: -50% 0;
+  background:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.18) 0 2px, transparent 2px 7px),
+    var(--amarelo);
+  opacity: 0.9;
+  rotate: -4deg;
+  clip-path: polygon(3% 0, 97% 4%, 100% 30%, 96% 55%, 99% 100%, 2% 96%, 0 62%, 4% 34%);
+}
+
+/* maço de telas impressas: três projetos que não estão nos destaques */
+.maco {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 360px);
+  aspect-ratio: 1200 / 780;
+  margin-top: 6px;
+}
+
+.folha {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--tinta);
+  border: 2px solid var(--tinta);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+
+.folha img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.folha:nth-child(1) {
+  rotate: -9deg;
+  translate: -14% 4%;
+  scale: 0.84;
+}
+
+.folha:nth-child(2) {
+  rotate: 7deg;
+  translate: 15% 2%;
+  scale: 0.84;
+}
+
+.folha:nth-child(3) {
+  rotate: -1.5deg;
+  scale: 0.9;
+  translate: 0 -4%;
+}
+
+.texto {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--creme);
+  background: var(--tinta);
+  rotate: -2deg;
+}
+
+.seloNumero {
+  padding: 2px 7px 0;
+  font-family: var(--fonte-pixel);
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--fosforo);
+  background: var(--tela-fundo);
+  text-shadow: 0 0 6px rgb(70 224 90 / 0.8);
+}
+
+/* pixel dos nomes dos cards, um pouco maior */
+.titulo {
+  margin-top: 4px;
+  font-family: var(--fonte-pixel);
+  font-weight: 400;
+  font-size: clamp(40px, 4vw, 60px);
+  line-height: 0.9;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+
+.frase {
+  max-width: 30ch;
+  margin-bottom: 8px;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.estrela {
+  position: absolute;
+  top: clamp(14px, 2vw, 26px);
+  right: clamp(14px, 2vw, 28px);
+  width: clamp(28px, 3vw, 42px);
+  height: auto;
+  rotate: 12deg;
+}
+
+.tiques {
+  position: absolute;
+  bottom: clamp(16px, 2vw, 28px);
+  left: clamp(14px, 2vw, 26px);
+  width: clamp(22px, 2.2vw, 32px);
+  height: auto;
+  rotate: 200deg;
+}
+
+@media (max-width: 759px) {
+  .chamada {
+    rotate: 0deg;
+    box-shadow: 6px 6px 0 var(--lima), 6px 6px 0 2px var(--tinta);
+  }
+
+  .maco {
+    width: min(78%, 300px);
+  }
+}
