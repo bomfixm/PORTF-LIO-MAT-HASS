@@ -1,0 +1,110 @@
+{
+  "voz": "pt-BR-AntonioNeural",
+  "falas": [
+    {
+      "id": "f01",
+      "legenda": "Essa ideia fugiu do template.",
+      "inicio": 0.7,
+      "duracao": 1.794,
+      "arquivo": "f01.wav"
+    },
+    {
+      "id": "f02",
+      "legenda": "Cortaram a personalidade.",
+      "inicio": 3.15,
+      "duracao": 1.567,
+      "arquivo": "f02.wav"
+    },
+    {
+      "id": "f03",
+      "legenda": "Trocaram a cor.",
+      "inicio": 4.867,
+      "duracao": 0.938,
+      "arquivo": "f03.wav"
+    },
+    {
+      "id": "f04",
+      "legenda": "Disseram que tava pronto.",
+      "inicio": 5.954,
+      "duracao": 1.429,
+      "arquivo": "f04.wav"
+    },
+    {
+      "id": "f05",
+      "legenda": "A gente abriu espaço.",
+      "inicio": 8.45,
+      "duracao": 1.247,
+      "arquivo": "f05.wav"
+    },
+    {
+      "id": "f06",
+      "legenda": "Desenhou.",
+      "inicio": 10.3,
+      "duracao": 0.653,
+      "arquivo": "f06.wav"
+    },
+    {
+      "id": "f07",
+      "legenda": "Escreveu código.",
+      "inicio": 11.7,
+      "duracao": 1.063,
+      "arquivo": "f07.wav"
+    },
+    {
+      "id": "f08",
+      "legenda": "E colocou pra funcionar.",
+      "inicio": 13.2,
+      "duracao": 1.487,
+      "arquivo": "f08.wav"
+    },
+    {
+      "id": "f09",
+      "legenda": "Os envolvidos?",
+      "inicio": 19.3,
+      "duracao": 0.969,
+      "arquivo": "f09.wav"
+    },
+    {
+      "id": "f10",
+      "legenda": "Mateus.",
+      "inicio": 20.75,
+      "duracao": 0.717,
+      "arquivo": "f10.wav"
+    },
+    {
+      "id": "f11",
+      "legenda": "Guilherme.",
+      "inicio": 21.85,
+      "duracao": 0.677,
+      "arquivo": "f11.wav"
+    },
+    {
+      "id": "f12",
+      "legenda": "A dupla por trás da WEB DECALQ.",
+      "inicio": 23.15,
+      "duracao": 1.996,
+      "arquivo": "f12.wav"
+    },
+    {
+      "id": "f13",
+      "legenda": "Sua ideia também tá apertada?",
+      "inicio": 27.45,
+      "duracao": 1.727,
+      "arquivo": "f13.wav"
+    },
+    {
+      "id": "f14",
+      "legenda": "Descola do igual.",
+      "inicio": 29.8,
+      "duracao": 1.245,
+      "arquivo": "f14.wav"
+    },
+    {
+      "id": "f15",
+      "legenda": "Cola na Decalq.",
+      "inicio": 31.195,
+      "duracao": 1.016,
+      "arquivo": "f15.wav"
+    }
+  ]
+}

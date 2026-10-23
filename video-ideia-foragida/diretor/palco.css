@@ -1,0 +1,226 @@
+/* Palco do vídeo: 540 × 960 px CSS (1080 × 1920 com DPR 2), por cima do site. */
+html,
+body {
+  overflow: hidden !important;
+}
+
+#palco {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 540px;
+  height: 960px;
+  overflow: hidden;
+  z-index: 2147483000;
+  background: #09100c;
+  isolation: isolate;
+  color: #ede8de;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  contain: strict;
+}
+
+/* quadro a quadro: nada anda sozinho, só a linha do tempo */
+#palco *,
+#palco *::before,
+#palco *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+#palco .v-mundo,
+#palco .v-camada {
+  position: absolute;
+  inset: 0;
+}
+
+#palco .v-abs {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* cada camada e cada peça é um grupo próprio: os z-index de dentro das cópias
+   (recortes na frente da TV, faces dos cards) não vazam para o palco */
+#palco .v-camada,
+#palco .v-abs {
+  isolation: isolate;
+}
+
+/* breu da abertura: luz atrás da TV, vinheta e grão */
+#palco .v-escuro {
+  background:
+    radial-gradient(70% 42% at 50% 36%, #143022 0%, rgba(16, 32, 22, 0) 72%),
+    #09100c;
+}
+
+#palco .v-escuro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 95% at 50% 42%, transparent 50%, rgba(0, 0, 0, 0.62) 100%),
+    var(--ruido-claro);
+  background-size: auto, 240px 240px;
+  opacity: 0.55;
+}
+
+/* papel claro com grão */
+#palco .v-papel {
+  background: #efe9dc;
+}
+
+#palco .v-papel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--ruido-escuro);
+  background-size: 180px 180px;
+  opacity: 0.22;
+}
+
+#palco .v-preto {
+  background: #000;
+}
+
+#palco .v-comp {
+  width: 540px;
+  transform-origin: 50% 42%;
+}
+
+#palco .v-comp > * {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* peças soltas (recortes, adesivos): o desenho ocupa a caixa */
+#palco .v-peca > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+#palco .v-tela-verde {
+  filter: grayscale(1) sepia(1) hue-rotate(62deg) saturate(2.6) brightness(1.08);
+  mix-blend-mode: screen;
+}
+
+/* carimbo de borracha */
+#palco .v-carimbo {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 10px 20px 9px;
+  border: 5px solid currentColor;
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+  border-radius: 8px;
+  font-family: Archivo, "Archivo Fallback", sans-serif;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  line-height: 0.92;
+  white-space: nowrap;
+  mix-blend-mode: normal;
+}
+
+#palco .v-carimbo .grande {
+  font-size: 50px;
+  letter-spacing: 0.01em;
+}
+
+#palco .v-carimbo .pequeno {
+  font-size: 22px;
+  letter-spacing: 0.16em;
+}
+
+/* esboço desenhado */
+#palco .v-esboco path {
+  fill: none;
+  stroke: #0d0f0c;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* código digitado */
+#palco .v-codigo {
+  margin: 0;
+  padding: 16px 18px;
+  font: 500 15px/1.6 "IBM Plex Mono", ui-monospace, monospace;
+  color: #c9f9ae;
+  white-space: pre;
+  text-shadow: 0 0 8px rgba(70, 224, 90, 0.45);
+}
+
+#palco .v-codigo .k {
+  color: #bcfa46;
+}
+
+#palco .v-codigo .s {
+  color: #f6c537;
+}
+
+#palco .v-codigo .c {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  vertical-align: -0.17em;
+  background: #c9f9ae;
+}
+
+/* selo "no ar" */
+#palco .v-noar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 10px;
+  background: #0d0f0c;
+  color: #ede8de;
+  border-radius: 999px;
+  font: 600 14px/1 "IBM Plex Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 #bcfa46;
+}
+
+#palco .v-noar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bcfa46;
+  box-shadow: 0 0 10px #bcfa46;
+}
+
+/* pixels soltos nas bordas do rasgo */
+#palco .v-px {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* legenda das falas */
+#palco .v-legenda {
+  position: absolute;
+  left: 50%;
+  top: 742px;
+  max-width: 476px;
+  padding: 9px 16px 10px;
+  background: rgba(9, 16, 12, 0.9);
+  border: 2px solid #bcfa46;
+  border-radius: 12px;
+  color: #ede8de;
+  font: 600 21px/1.25 "IBM Plex Mono", ui-monospace, monospace;
+  text-align: center;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+/* títulos clonados do site, centralizados no palco */
+#palco .v-titulo {
+  margin: 0 !important;
+  width: max-content;
+  max-width: 520px;
+}
