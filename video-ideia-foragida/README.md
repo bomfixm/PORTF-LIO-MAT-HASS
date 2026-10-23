@@ -14,9 +14,9 @@ o palco só existe dentro do navegador de gravação.
 | Voz (IA masculina, edge-tts `pt-BR-AntonioNeural`) | **pronta**: `voz/f01–f15.wav` (silêncio aparado) + `voz/tempos.json` (início e duração de cada fala; última termina em 32,21 s) |
 | Servidor local (`servidor.mjs`: site na raiz, vídeo em `/video/`, GSAP em `/video/gsap/`) | pronto |
 | CSS do palco (`diretor/palco.css`) | pronto |
-| Diretor das cenas (`diretor/diretor.js`) | **a fazer** |
-| Gravação dos quadros (`render.mjs`) | a fazer |
-| Efeitos sonoros + mixagem + MP4 final (`mixar.mjs`) | a fazer |
+| Diretor das cenas (`diretor/diretor.js`) | pronto: 5 cenas, legendas f01–f13, lista de efeitos sonoros (`sons`) |
+| Gravação dos quadros (`render.mjs`) | pronto: prévia (quadros soltos e folha de contato) e 30 fps → `saida/video-mudo.mp4` |
+| Efeitos sonoros + mixagem + MP4 final (`mixar.mjs`) | pronto: efeitos sintetizados, −14 LUFS → `saida/ideia-foragida-1080x1920.mp4` |
 
 ## Rodar
 
@@ -27,7 +27,18 @@ npm ci && npm run build
 npm install
 node servidor.mjs 3230            # http://localhost:3230/  (site) e /video/... (vídeo)
 python voz/gerar_voz.py           # só se precisar refazer a voz (pip install edge-tts; precisa de rede)
+
+# gravar (o render sobe o próprio servidor numa porta livre)
+export CHROME_PATH=/caminho/do/chrome   # no Linux da nuvem: /opt/pw-browsers/chromium
+node render.mjs --folha 1                 # folha de contato → saida/previa/folha.jpg
+node render.mjs --previa 2.5,7.6,26       # quadros soltos → saida/previa/q-<t>.png
+node render.mjs                           # 1005 quadros 1080 × 1920 → saida/video-mudo.mp4 + saida/sons.json (~25 min)
+node mixar.mjs                            # efeitos + voz + loudnorm → saida/ideia-foragida-1080x1920.mp4
 ```
+
+Os efeitos sonoros saem da própria linha do tempo: cada `som(t, tipo)` do diretor vai para
+`saida/sons.json`, e o `mixar.mjs` tem uma receita lavfi por tipo (tv, bate, rompe, whoosh,
+batida, carimbo, rasgo, papel, pop, risco, teclas, baque, virada, descolar).
 
 Chrome: `CHROME_PATH` aponta o executável (no Windows o padrão é o Chrome instalado).
 No Linux, `npx playwright install chromium` e usar esse caminho. Para WebGL não é

@@ -39,6 +39,13 @@ body {
   top: 0;
 }
 
+/* cada camada e cada peça é um grupo próprio: os z-index de dentro das cópias
+   (recortes na frente da TV, faces dos cards) não vazam para o palco */
+#palco .v-camada,
+#palco .v-abs {
+  isolation: isolate;
+}
+
 /* breu da abertura: luz atrás da TV, vinheta e grão */
 #palco .v-escuro {
   background:
