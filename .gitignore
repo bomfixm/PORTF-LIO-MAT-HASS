@@ -5,3 +5,7 @@ out/
 .env
 .env.*
 !.env.example
+
+# vídeo: arquivos gerados
+video-ideia-foragida/saida/
+video-ideia-foragida/voz/bruto/
