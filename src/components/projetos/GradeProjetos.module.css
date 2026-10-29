@@ -162,17 +162,6 @@
   width: calc(50% - clamp(28px, 4vw, 64px) / 2);
 }
 
-@media (max-width: 759px) {
-  .lista {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .item:last-child:nth-child(odd) {
-    width: auto;
-    justify-self: stretch;
-  }
-}
-
 /* ——— card ——— */
 
 .card {
@@ -497,4 +486,92 @@
 .vazioAcao:active {
   translate: 2px 2px;
   box-shadow: 2px 2px 0 var(--tinta);
+}
+
+/* Duas telas por linha também no celular, com informações em fluxo vertical. */
+@media (max-width: 759px) {
+  .lista {
+    gap: 30px 18px;
+  }
+
+  .item {
+    min-width: 0;
+  }
+
+  .card {
+    gap: 12px;
+  }
+
+  .info {
+    flex: 1;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "meta" "nome" "desc" "acao";
+    grid-template-rows: auto auto 1fr auto;
+    align-items: start;
+    gap: 8px;
+  }
+
+  .meta {
+    gap: 6px;
+  }
+
+  .numero {
+    font-size: 23px;
+  }
+
+  .categoria,
+  .situacao {
+    font-size: 10px;
+    padding: 3px 5px;
+    letter-spacing: 0;
+  }
+
+  .segmento {
+    flex-basis: 100%;
+    font-size: 11px;
+  }
+
+  .nome {
+    font-size: clamp(23px, 5.6vw, 36px);
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  .descricao {
+    font-size: 12px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .acao {
+    align-self: end;
+    justify-self: start;
+    font-size: 12px;
+    padding-inline: 12px;
+  }
+
+  .fita {
+    right: -9px;
+    top: -4px;
+    width: 48px;
+    height: 16px;
+  }
+
+  .item:nth-child(even) .fita {
+    top: -4px;
+  }
+
+  .tela {
+    box-shadow: 5px 5px 0 var(--cor), 5px 5px 0 1px var(--tinta);
+  }
+
+  .link::after {
+    inset: -4px;
+  }
+
+  .item[data-chamada]:last-child {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    width: auto;
+  }
 }

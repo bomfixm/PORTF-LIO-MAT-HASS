@@ -140,3 +140,12 @@
     rotate: 0deg;
   }
 }
+
+/* Os dois passes e seus botões cabem juntos na área útil do celular. */
+@media (max-width: 759px) {
+  .cards {
+    grid-template-columns: minmax(0, min(100%, 420px, calc((100svh - var(--cabecalho-h) - 144px) * 680 / 820)));
+    gap: 20px;
+    margin-block: 0;
+  }
+}

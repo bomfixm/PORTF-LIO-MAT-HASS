@@ -258,7 +258,7 @@ function Card({ projeto: p, lugar }: { projeto: Projeto; lugar: Lugar }) {
       <Moldura
         imagem={p.imagens.capa}
         dominio={dominio(p.url)}
-        sizes="(min-width: 900px) 45vw, 92vw"
+        sizes="(min-width: 1380px) 600px, (max-width: 759px) 44vw, 45vw"
         className={s.tela}
       />
       <div className={s.info}>

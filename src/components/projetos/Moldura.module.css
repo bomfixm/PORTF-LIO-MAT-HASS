@@ -82,3 +82,31 @@
   background: #3a3c36;
   translate: -50% 0;
 }
+
+@media (max-width: 759px) {
+  .moldura {
+    --bisel: 3px;
+    border-radius: 7px;
+  }
+
+  .barra {
+    min-height: 20px;
+    gap: 5px;
+    padding-inline: 2px;
+  }
+
+  .luzes {
+    flex: none;
+    gap: 3px;
+  }
+
+  .luzes i {
+    width: 4px;
+    height: 4px;
+  }
+
+  .dominio {
+    min-width: 0;
+    font-size: 8px;
+  }
+}

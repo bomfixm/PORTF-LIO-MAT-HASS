@@ -445,3 +445,9 @@ Etapa 3 em `capturas/etapa-3/` (build estático, Chrome real, movimento reduzido
 Ajustes da etapa 2 em `capturas/etapa-2b/`: gravação real de ~42 s no desktop (movimento próprio, quatro falhas, brilho, desligar/ligar e "Rever intro" com cliques repetidos — cursor e legendas são sobreposições só da gravação), trecho de 16 s no celular (toques repetidos na energia) e estados finais.
 
 **Para rever a intro:** botão ↻ na moldura da TV ("Rever intro"). A automática toca uma vez por sessão (também com movimento reduzido no sistema, em versão atenuada); se as animações foram desativadas, "Ativar animações" no cabeçalho.
+
+## Ajuste mobile — 29/10/2026
+
+- Grade dos projetos em duas colunas também no celular, na Home e no catálogo; tipografia, molduras e ações compactadas para essa largura.
+- Passes da dupla mantêm a proporção horizontal de 680 × 410 no celular, empilhados e dimensionados pela área útil da tela. Removida a reorganização vertical anterior.
+- Verificação: build de produção concluído; conferência no navegador em 320 × 568, 390 × 844, 430 × 932 e 1440 × 1000; filtro de sites e virada do passe conferidos.
