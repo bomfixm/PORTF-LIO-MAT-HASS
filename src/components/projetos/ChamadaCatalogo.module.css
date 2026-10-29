@@ -1,7 +1,7 @@
 /*
  * Chamada para o catálogo: ocupa a coluna ao lado do último card da Home e
- * acompanha a altura dele (o item da grade estica na linha); no celular,
- * empilhada, fica do tamanho do conteúdo.
+ * acompanha a altura dele (o item da grade estica na linha), inclusive
+ * no celular, com composição compacta para a largura de uma coluna.
  */
 .chamada {
   position: relative;
@@ -151,11 +151,75 @@
 
 @media (max-width: 759px) {
   .chamada {
+    --botao-fs: 11px;
+    --botao-altura: 44px;
+    min-width: 0;
+    gap: 12px;
+    padding: 18px 10px 14px;
     rotate: 0deg;
-    box-shadow: 6px 6px 0 var(--lima), 6px 6px 0 2px var(--tinta);
+    box-shadow: 5px 5px 0 var(--lima), 5px 5px 0 1px var(--tinta);
   }
 
   .maco {
-    width: min(78%, 300px);
+    width: 85%;
+  }
+
+  .texto {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .selo {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px;
+    max-width: 100%;
+    padding: 4px;
+    font-size: 8px;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  .seloNumero {
+    padding-inline: 3px;
+    font-size: 18px;
+  }
+
+  .titulo {
+    font-size: clamp(23px, 5.6vw, 36px);
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  .frase {
+    margin-bottom: 0;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .texto a {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 6px;
+    gap: 4px;
+    white-space: normal;
+  }
+
+  .fita {
+    top: -8px;
+    width: 50px;
+    height: 14px;
+  }
+
+  .estrela {
+    top: 6px;
+    right: 6px;
+    width: 16px;
+  }
+
+  .tiques {
+    bottom: 6px;
+    left: 6px;
+    width: 12px;
   }
 }

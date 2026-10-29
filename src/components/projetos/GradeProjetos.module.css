@@ -570,7 +570,7 @@
   }
 
   .item[data-chamada]:last-child {
-    grid-column: 1 / -1;
+    grid-column: auto;
     justify-self: stretch;
     width: auto;
   }
